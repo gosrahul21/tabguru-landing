@@ -10,6 +10,7 @@ import {
   BookOpen,
   Shield,
   CheckCircle2,
+  Github,
 } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
@@ -63,41 +64,62 @@ export default function Home() {
       {/* ══════════════════════════════════════
           STICKY NAVIGATION
       ══════════════════════════════════════ */}
-      <header className="fixed top-0 inset-x-0 z-50">
-        <nav className="nav-blur max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+      <header className="fixed top-5 inset-x-0 z-50 flex justify-center px-4">
+        <nav className="nav-pill flex items-center gap-2 px-3 py-2">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2.5 pr-2">
             <div className="relative">
-              <div className="absolute inset-0 rounded-xl bg-violet-500/20 blur-md" />
+              <div className="absolute inset-0 rounded-xl bg-violet-500/25 blur-md" />
               <Image
                 src="/logo.png"
                 alt="Tab Guru"
-                width={36}
-                height={36}
+                width={30}
+                height={30}
                 className="relative rounded-xl"
               />
             </div>
-            <span className="font-outfit font-bold text-[1.1rem] tracking-tight text-white">
+            <span className="font-outfit font-bold text-[1rem] tracking-tight text-white">
               Tab<span className="text-violet-400">Guru</span>
             </span>
-          </div>
+          </a>
 
-          <div className="hidden md:flex items-center gap-8">
+          {/* Divider */}
+          <span className="hidden md:block w-px h-4 bg-white/10 mx-1" />
+
+          {/* Nav links */}
+          <div className="hidden md:flex items-center gap-1">
             {["Features", "Reflection"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-slate-400 hover:text-white text-sm font-medium transition-colors duration-200 tracking-wide"
+                className="text-slate-400 hover:text-white text-sm font-medium transition-colors duration-200 tracking-wide px-3 py-1.5 rounded-full hover:bg-white/5"
               >
                 {item}
               </a>
             ))}
           </div>
 
+          {/* Divider */}
+          <span className="hidden md:block w-px h-4 bg-white/10 mx-1" />
+
+          {/* GitHub trust link */}
+          <a
+            href="https://github.com/gosrahul21/TabGuru"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="View source on GitHub"
+            className="hidden md:flex items-center gap-1.5 text-slate-500 hover:text-slate-200 transition-colors duration-200 px-2.5 py-1.5 rounded-full hover:bg-white/5 text-xs font-medium"
+          >
+            <Github className="w-3.5 h-3.5" />
+            <span>Open source</span>
+          </a>
+
+          {/* CTA */}
           <a
             href="#add"
-            className="btn-shimmer relative flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-200 shadow-[0_0_24px_rgba(139,92,246,0.5)]"
+            className="btn-shimmer relative flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 shadow-[0_0_20px_rgba(139,92,246,0.45)] ml-1"
           >
-            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.5c2.42 0 4.59.99 6.17 2.59L13.5 12H20c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8z"/></svg>
+            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.5c2.42 0 4.59.99 6.17 2.59L13.5 12H20c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8z"/></svg>
             Add to Chrome
           </a>
         </nav>
