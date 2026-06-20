@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
   ArrowRight,
@@ -384,7 +384,7 @@ export default function Home() {
           pullQuote="No pressure. Just presence."
           visual="timer"
         />
-        <ScrollNarrativeFeature
+        <HorizontalCardFeature
           accent="blue"
           label="Tab relationships"
           headline="Tabs that belong together, close together."
@@ -802,6 +802,106 @@ function ScrollNarrativeFeature({
         </div>
       </div>
     </div>
+  );
+}
+
+/* ── Horizontal Card Feature (Sticky Scroll) ───────────── */
+function HorizontalCardFeature({
+  accent,
+  label,
+  headline,
+  sentences,
+  pullQuote,
+  visual,
+}: {
+  accent: Accent;
+  label: string;
+  headline: string;
+  sentences: string[];
+  pullQuote: string;
+  visual: Visual;
+}) {
+  const a = accentColors[accent];
+  const targetRef = useRef<HTMLDivElement>(null);
+  
+  // Track the scroll progress of the entire section
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"]
+  });
+
+  const numCards = 1 + sentences.length + 1; // mockup + sentences + quote
+  
+  // Move the container horizontally based on scroll progress
+  // We use percentages because the container width is `numCards * 100%` of viewport width.
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${((numCards - 1) / numCards) * 100}%`]);
+
+  return (
+    <section ref={targetRef} className="relative bg-[#0b1120]" style={{ height: `${numCards * 100}vh` }}>
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center items-center">
+        
+        {/* Background glow matching accent */}
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] ${a.bg} blur-[120px] rounded-[100%] opacity-20 pointer-events-none`} />
+
+        <div className="container mx-auto px-6 relative z-10 pt-20 mb-8 shrink-0">
+          <div className="max-w-xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 mb-6">
+              <span className={`h-px w-8 ${a.bg.replace('/10', '/40')}`} />
+              <span className={`text-xs font-bold uppercase tracking-[0.2em] ${a.text}`}>
+                {label}
+              </span>
+              <span className={`h-px w-8 ${a.bg.replace('/10', '/40')}`} />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+              {headline}
+            </h2>
+          </div>
+        </div>
+
+        {/* Horizontal Sliding Area */}
+        <motion.div 
+          style={{ x, width: `${numCards * 100}vw` }} 
+          className="flex h-[400px] md:h-[500px] items-center"
+        >
+          {/* Mockup Card */}
+          <div className="w-screen flex justify-center items-center shrink-0 px-6">
+            <div className={`relative w-full max-w-[600px] h-full rounded-3xl border ${a.border} ${a.bg} overflow-hidden backdrop-blur-md p-8 flex flex-col justify-center shadow-2xl`}>
+               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
+               <div className="relative z-10 w-full max-w-[320px] mx-auto scale-110">
+                 {visual === "intention" && <IntentionMockup />}
+                 {visual === "timer" && <TimerMockup />}
+                 {visual === "tree" && <TreeMockup />}
+               </div>
+            </div>
+          </div>
+
+          {/* Text Cards */}
+          {sentences.map((sentence, i) => (
+            <div key={i} className="w-screen flex justify-center items-center shrink-0 px-6">
+              <div className="w-full max-w-[500px] h-full rounded-3xl bg-white/[0.02] border border-white/[0.05] p-10 md:p-14 flex flex-col justify-between relative group overflow-hidden shadow-2xl">
+                <div className={`absolute top-0 left-0 w-full h-1 ${a.bg.replace('/10', '/40')} opacity-50`} />
+                <span className="text-8xl font-serif text-white/5 select-none font-bold leading-none">
+                  {(i + 1).toString().padStart(2, '0')}
+                </span>
+                <p className="text-2xl md:text-3xl text-slate-200 font-medium leading-relaxed">
+                  {sentence}
+                </p>
+              </div>
+            </div>
+          ))}
+          
+          {/* Pull Quote Card */}
+          <div className="w-screen flex justify-center items-center shrink-0 px-6">
+            <div className={`w-full max-w-[600px] h-full rounded-3xl ${a.glow} border ${a.border} p-10 md:p-14 flex flex-col items-center justify-center text-center relative overflow-hidden backdrop-blur-md shadow-2xl`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
+              <blockquote className={`text-3xl md:text-4xl font-medium ${a.highlight} leading-snug relative z-10`}>
+                "{pullQuote}"
+              </blockquote>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
