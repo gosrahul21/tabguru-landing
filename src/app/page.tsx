@@ -360,14 +360,12 @@ export default function Home() {
         <ScrollNarrativeFeature
           accent="violet"
           label="Intention before the tab"
-          headline="A breath before the click."
+          headline="Being aware of your Intention."
           sentences={[
             "Most tabs open on autopilot.",
             "A flicker of curiosity, a half-formed thought — and suddenly you're somewhere you didn't plan to be.",
             "Tab Guru places a single, gentle question before every new tab opens: What's your intention here?",
-            "Not to stop you. Not to judge you.",
-            "Just to give you one moment of awareness before the momentum takes over.",
-            "That moment is enough to change everything.",
+            "Not to control, But to give just one moment of awareness",
           ]}
           pullQuote="Less clutter. Lighter mind."
           visual="intention"
@@ -394,8 +392,8 @@ export default function Home() {
             "A task rarely lives in one tab.",
             "Research, documentation, the issue tracker, the pull request — they're all part of the same thread of thought.",
             "Tab Guru lets you group tabs the way your mind already does: one parent task, with the tabs that support it nested beneath.",
-            "When the task is done, everything closes with it — cleanly, quietly.",
-            "Without the guilt of a graveyard of open windows.",
+            "With Tab - Sub Tab navigation, you are not offtrack and exausted",
+            "Once the task is done, every subtab closes with it — cleanly, quietly.",
           ]}
           pullQuote="Close the task. The rest takes care of itself."
           visual="tree"
