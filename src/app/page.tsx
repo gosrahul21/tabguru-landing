@@ -126,7 +126,9 @@ export default function Home() {
 
           {/* CTA */}
           <a
-            href="#add"
+            href="https://chromewebstore.google.com/detail/mbmdaikcgkimoalogelomgjafpmhdojm?utm_source=item-share-cb"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-shimmer relative flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 shadow-[0_0_20px_rgba(139,92,246,0.45)] ml-1"
           >
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.5c2.42 0 4.59.99 6.17 2.59L13.5 12H20c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8z"/></svg>
@@ -193,7 +195,9 @@ export default function Home() {
             >
               <a
                 id="add"
-                href="#"
+                href="https://chromewebstore.google.com/detail/mbmdaikcgkimoalogelomgjafpmhdojm?utm_source=item-share-cb"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-shimmer group flex items-center justify-center gap-2.5 bg-white text-slate-900 hover:bg-slate-50 px-8 py-3.5 rounded-2xl font-bold text-[0.95rem] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(255,255,255,0.15),0_2px_20px_rgba(0,0,0,0.4)] w-full sm:w-auto"
               >
                 Add to Chrome — it&apos;s free
@@ -580,7 +584,9 @@ export default function Home() {
             className="cta-glow flex flex-col items-center gap-5"
           >
             <a
-              href="#"
+              href="https://chromewebstore.google.com/detail/mbmdaikcgkimoalogelomgjafpmhdojm?utm_source=item-share-cb"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-shimmer group flex items-center gap-3 bg-white text-slate-900 hover:bg-slate-50 px-10 py-4 rounded-2xl font-bold text-base transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_60px_rgba(255,255,255,0.12),0_4px_40px_rgba(0,0,0,0.5)]"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.5c2.42 0 4.59.99 6.17 2.59L13.5 12H20c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8z"/></svg>
