@@ -87,7 +87,7 @@ export default function Home() {
 
           {/* Nav links */}
           <div className="hidden md:flex items-center gap-1">
-            {["Features", "Reflection"].map((item) => (
+            {["Features", "Reflection", "Pricing"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -545,8 +545,83 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="section-divider max-w-6xl mx-auto" />
+
       {/* ══════════════════════════════════════
-          SECTION 4 — CLOSING CTA
+          SECTION 4 — PRICING
+      ══════════════════════════════════════ */}
+      <section id="pricing" className="relative z-10 py-36 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <motion.p {...inView(0)} className="text-violet-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-5">
+              Pricing
+            </motion.p>
+            <motion.h2
+              {...inView(0.06)}
+              className="font-outfit font-extrabold text-[clamp(2rem,4.5vw,3.2rem)] tracking-[-0.025em] text-white mb-6 leading-[1.1]"
+            >
+              Simple pricing. Yours forever.
+            </motion.h2>
+            <motion.p {...inView(0.1)} className="text-slate-400 leading-[1.8] mb-5 text-[1.05rem] max-w-xl mx-auto">
+              No subscriptions, no hidden fees. Pay once and enjoy a calmer, more mindful browsing experience forever.
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease }}
+            className="relative max-w-lg mx-auto"
+          >
+            {/* Background glow */}
+            <div className="absolute -inset-6 bg-violet-600/12 blur-3xl rounded-3xl pointer-events-none" />
+            <div className="relative glass rounded-[28px] p-9 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.06)] border border-violet-500/20">
+              
+              <div className="text-center mb-8">
+                <h3 className="text-xl font-semibold text-white mb-2 font-outfit">Lifetime Access</h3>
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <span className="text-slate-400 text-lg line-through font-semibold">$39</span>
+                  <span className="text-5xl font-extrabold text-white font-outfit tracking-tight">$19</span>
+                  <span className="text-slate-400 text-sm font-medium self-end mb-1.5">/ one-time</span>
+                </div>
+                <div className="inline-block bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                  Early Adopter Price
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                {[
+                  "Unlimited focus intentions",
+                  "Tab time limits & reminders",
+                  "Tab grouping and relationship tree",
+                  "Daily focus reflection stats",
+                  "All future updates included",
+                  "Data stays securely on your device"
+                ].map((feature, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-violet-400 shrink-0 mt-0.5" />
+                    <span className="text-slate-300 font-medium text-[0.95rem]">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="https://chromewebstore.google.com/detail/mbmdaikcgkimoalogelomgjafpmhdojm?utm_source=item-share-cb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-shimmer group w-full flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-8 py-4 rounded-xl font-bold text-[1rem] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_30px_rgba(139,92,246,0.3)]"
+              >
+                Get TabGuru Now
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          SECTION 5 — CLOSING CTA
       ══════════════════════════════════════ */}
       <section className="relative z-10 py-44 px-6">
         {/* Background glow */}
